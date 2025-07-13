@@ -8,8 +8,6 @@ from player import Player
 import random
 
 class GeneticAlgorithm:
-    # population = []         ## the population
-    # best_path = []          ## list of coordinates representing the path from 'start' to 'end' coordinates. e.g. [(1,1),(2,1),...(9,9)] where start=(1,1) and end=(9,9)
     is_end = False          ## is the problem solved, if True then quit
     bestPlayer = None
     def __init__(self, start_position: set, end_position: set, maze: Maze,  max_generations: int=50, population_size: int=100, mutation_rate: float=0.01, min_fitness_difference: float=0.1, elitism_rate: float=0.4,best_path: list=[] ):
@@ -18,7 +16,6 @@ class GeneticAlgorithm:
         self.maze = maze
         self.max_generations = max_generations                  ## maximum number of generations
         self.current_generation = 0                             ## which generation are we at (the generation that's gonna get drafted for ww3)
-
 
         self.min_fitness_difference = min_fitness_difference    ## epsilon. If the fitness between the previous and current generation is less than this then stop the algorithm
         self.fitnesses = [999999999]                            ## save the fitness value for each generation here
@@ -105,9 +102,9 @@ class GeneticAlgorithm:
 
 
     def is_termination_condition_satisfied(self):
-        if self.current_generation >= self.max_generations:
+        if self.current_generation >= self.max_generations:  ## too many generations
             return True
-        if self.fitnesses[-1] == 0:
+        if self.fitnesses[-1] == 0: ## reached the end
             return True
         # if abs(self.fitnesses[self.current_generation] - self.fitnesses[self.current_generation-1]) < self.min_fitness_difference:
         #     return True
@@ -131,11 +128,6 @@ class GeneticAlgorithm:
             self._evaluate_population()
             self.fitnesses.append(self._fitness())
 
-            ## TODO: make a proper end 
-            ## old:
-            # self.bestPlayer = max(self.population, key=lambda x: x.fitness)
-            # if self.bestPlayer.fitness==1:
-            #     self.is_end = True
             
 
 

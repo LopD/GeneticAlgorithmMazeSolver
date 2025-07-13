@@ -152,14 +152,18 @@ class Player:
         
 
         ## evaluate them in a simple manner
+        ##! MANNHATTAN DISTANCE
         # self.fitness = manhattan_distance(last_position,self.end) 
+        
+        ##! EUCLIDIAN DISTANCE
         self.fitness = euclidean_distance(last_position,self.end) 
         
-        ## try using the fields fitness
+        ## 3rd OPTION OF USING THE FITNESS OF THE FIELDS
+        ##! try using the fields fitness
         # if fields is not None:
         #     self.fitness = fields[last_position[0]][last_position[1]].fitness
         # else:
-        #     self.fitness = -99 ## fuck it, fix it later
+        #     self.fitness = -99 
 
         return self.fitness
 
@@ -173,15 +177,6 @@ class Player:
         Returns:
             Player -- new Player object representing the cross over child
         '''
-        ## option 1: SHITDICK
-        ## ----------------------
-        ## follow the path of both parents
-        ## once the path diverges pick the 3rd option that neither parent picked or follow any of the 2 parents 
-        ## if there was no 3rd option when picking a new path and you had to follow a parent 
-        ## go to the first junction/crossroad that the parent did not pick and go there 
-        ## NOTE that you should go from the parents head in reverse when doing that as the parents could split up early making the child be stuck somewhere at the start of the labyrinth when the parents were close to the end
-        ## ----------------------
-
         better_parent = min(self,partner,key=lambda x: x.fitness)                 ## find the better parent
         other_parent  = max(self,partner,key=lambda x: x.fitness)                 
         

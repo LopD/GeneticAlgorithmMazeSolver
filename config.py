@@ -1,11 +1,12 @@
-# WINDOW_TITLE = "Maze Explorer"
+"""
+Genetic algorithm config.
+"""
 
-MAZE_WIDTH = 40  ## 40
-MAZE_HEIGHT = 20 ## 20
-# BLOCK_SIZE = 15
+MAZE_WIDTH = 40 
+MAZE_HEIGHT = 20
+
 
 GENERATIONS = 50
-# GENERATIONS = 500
 POPULATION_SIZE = 100
 MUTATION_RATE = 0.1
 

@@ -13,8 +13,6 @@ class Maze():
         self.height = cfg.MAZE_HEIGHT
         self.fields = []                             ## 2D array of 'Field' objects representing the fields of the maze
 
-    # def __call__(self, *args, **kwds):
-    #     return self.fields    
 
     def is_within_bounds(self, x:int, y:int) -> bool:
         '''
@@ -28,10 +26,7 @@ class Maze():
         Paramters:
             seed_value int -- The seed used for generating the maze
         '''
-        
         random.seed(seed_value)
-        # print([random.randint(1, 10) for _ in range(5)])
-        # random_boolean = random.choice([True, False])
         self._prims_maze_generation_algorithm(cfg.START_COORDS,cfg.END_COORDS)
     
 
