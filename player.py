@@ -157,6 +157,12 @@ class Player:
         
         ##! EUCLIDIAN DISTANCE
         self.fitness = euclidean_distance(last_position,self.end) 
+
+        ## EUCLIDEAN DISTANCE OF ALL ELEMENTS IN THE PATH
+        # new_fitness = 0
+        # for position in self.path:
+        #     new_fitness += euclidean_distance(position,self.end)
+        # self.fitness = new_fitness
         
         ## 3rd OPTION OF USING THE FITNESS OF THE FIELDS
         ##! try using the fields fitness

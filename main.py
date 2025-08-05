@@ -29,6 +29,7 @@ def run_test(seeds: list=[]):
             mutation_rate=cfg.MUTATION_RATE,
             start_position=cfg.START_COORDS,
             end_position=cfg.END_COORDS,
+            elitism_rate=cfg.ELITISM_RATE,
             maze=maze
         )
         gen_algo.next_gen()
@@ -66,9 +67,20 @@ if __name__ == '__main__':
     
     ## print final statistics:
     print("test_statistics:")
+    avg_fitness = 0
+    solved_cases = 0
     for id in range(len(seeds)):
+        avg_fitness += test_statistics[id][1]
+        solved_cases += 1 if test_statistics[id][1] == 0 else 0
         print(f"test id={id}; seed={seeds[id]}; num of generations={test_statistics[id][0]}; fitness={test_statistics[id][1]}")
 
+    avg_fitness /= len(seeds)
+    print(f"avg_fitness={avg_fitness}; solved_cases={solved_cases}")
+    print(f"max_generations={cfg.GENERATIONS}; population_size={cfg.POPULATION_SIZE}; mutation_rate={cfg.MUTATION_RATE}; elitism_rate={cfg.ELITISM_RATE};")
+    print(f"start_position={cfg.START_COORDS}; end_position={cfg.END_COORDS}; MAZE_WIDTH={cfg.MAZE_WIDTH}; MAZE_HEIGHT={cfg.MAZE_HEIGHT}")
+    
+
+    
     # Optional: reset stdout back to normal (console)
     sys.stdout = sys.__stdout__
     f.close()
